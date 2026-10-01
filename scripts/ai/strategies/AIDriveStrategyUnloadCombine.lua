@@ -2098,11 +2098,12 @@ end
 -- Start moving back from empty combine
 ------------------------------------------------------------------------------------------------------------------------
 function AIDriveStrategyUnloadCombine:startMovingBackFromCombine(newState, combine, holdCombineWhileMovingBack)
-    if self.unloadTargetType == self.UNLOAD_TYPES.SILO_LOADER then
-        --- Finished unloading of silo unloader. Moving back is not needed.
-        self:setNewState(self.states.IDLE)
-        return
-    end
+    ---conflicting vegetable harvesters (towed and self driving) 
+    --- if self.unloadTargetType == self.UNLOAD_TYPES.SILO_LOADER then
+    ---    --- Finished unloading of silo unloader. Moving back is not needed.
+    ---    self:setNewState(self.states.IDLE)
+    ---    return
+    ---end
 
     local reverseCourse = Course.createStraightReverseCourse(self.vehicle, 15)
     self:startCourse(reverseCourse, 1)
